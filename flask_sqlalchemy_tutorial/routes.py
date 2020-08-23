@@ -26,7 +26,10 @@ def user_records():
         )  # Create an instance of the User class
         db.session.add(new_user)  # Adds new User record to database
         db.session.commit()  # Commits all changes
-        redirect(url_for('user_records'))
+        redirect(url_for('user_records')) # NOTE: we redirect to a function name not a url
+
+    # no matter if the input aruments of 'username' and 'email' have values or not,
+    # all stored users in DB will be returned
     return render_template(
         'users.jinja2',
         users=User.query.all(),
